@@ -1,26 +1,26 @@
-/* Defines*/
-#ifndef MAIN_H
-#define MAIN_H
+#ifndef HEADER
+#define HEADER
+/*
+ * main.h icnludes read_textfile.c + create_file.c + append_text_to_file.c
+*/
 
 
-/* Includes*/
+
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
 
 
-/*
- * read_textfile: refers to the file 0-read_textfile.c
- * create_file: refers to the file 1-create_file.c
- * append_text_to_file: refers to the file 2-append_text_to_file.c
-*/
 
+
+//Code for main function
+int _putchar(char c);
 ssize_t read_textfile(const char *filename, size_t letters);
-int append_text_to_file(const char *filename, char *text_content);
 int create_file(const char *filename, char *text_content);
-
-#endif
-
+int append_text_to_file(const char *filename, char *text_content);
 
 
+
+
+#endif /* MAIN_H */
