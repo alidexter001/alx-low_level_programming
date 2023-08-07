@@ -2,26 +2,40 @@
 #include <stdlib.h>
 
 /**
- * read_my_text_file- Read the text file print to STDOUT.
- * @filename: text file name being read
- * @letters: number of letters to be counted
- * Return: when function fails or filename is NULL return 0
+ * read_and_print_text - Read text from a file and write to STDOUT.
+ * @filename: The name of the text file to be read.
+ * @max_characters: The maximum number of characters to be read.
+ * Return: The number of characters written to STDOUT, or 0 on failure.
  */
-ssize_t read_my_text_file(const char *filename, size_t letters)
+ssize_t read_and_print_text(const char *filename, size_t max_characters)
 {
-	char *duf;
-	ssize_t fd1;
-	ssize_t j;
-	ssize_t k;
+    char *buffer;
+    ssize_t file_descriptor;
+    ssize_t bytes_read;
+    ssize_t bytes_written;
 
-	fd1 = open(filename, O_RDONLY);
-	if (fd1 == -1)
-		return (0);
-	duf = malloc(sizeof(char) * letters);
-	k = read(fd1, duf, letters);
-	j = write(STDOUT_FILENO, duf, k);
+    file_descriptor = open(filename, O_RDONLY);
+    if (file_descriptor == -1)
+        return (0);
 
-	free(duf);
-	close(fd1);
-	return (j);
+    buffer = malloc(sizeof(char) * max_characters);
+    if (!buffer) {
+        close(file_descriptor);
+        return (0);
+    }
+
+    bytes_read = read(file_descriptor, buffer, max_characters);
+    if (bytes_read == -1) {
+        free(buffer);
+        close(file_descriptor);
+        return (0);
+    }
+
+    bytes_written = write(STDOUT_FILENO, buffer, bytes_read);
+
+    free(buffer);
+    close(file_descriptor);
+
+    return (bytes_written);
 }
+
