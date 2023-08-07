@@ -28,6 +28,8 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 
+
+
 /**
  * _close - close a file descriptor and print an error message upon failure
  * @fd: the file descriptor to close
@@ -55,6 +57,8 @@ void _read(int fd, char *buf, size_t count)
 	exit(98);
 }
 
+
+
 /**
  * elf_magic - print ELF magic
  * @buffer: the ELF header
@@ -74,6 +78,9 @@ void elf_magic(const unsigned char *buffer)
 	for (i = 0; i < 16; ++i)
 		printf("%02x%c", buffer[i], i < 15 ? ' ' : '\n');
 }
+
+
+
 
 /**
  * elf_class - print ELF class
