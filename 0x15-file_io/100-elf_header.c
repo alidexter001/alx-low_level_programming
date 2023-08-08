@@ -66,43 +66,38 @@ void elf_magic(const unsigned char *buffer)
 		exit(98);
 	}
 
-	printf("ELF Header:\n  Magic:   ");
+	printf("ELF H:\n  Magic:   ");
 
 	for (i = 0; i < 16; ++i)
 		printf("%02x%c", buffer[i], i < 15 ? ' ' : '\n');
 }
-
-
-
-
 /**
- * elf_class - print ELF class
- * @buffer: the ELF header
+ * elf_class - print ELF classes
+ * @buffer: ELF header
  *
- * Return: bit mode (32 or 64)
+ * Return: bit mode
  */
 size_t elf_class(const unsigned char *buffer)
 {
-	printf("  %-34s ", "Class:");
+	printf("  %-34s ", "Classes:");
 
 	if (buffer[EI_CLASS] == ELFCLASS64)
 	{
-		printf("ELF64\n");
+		printf("ELF64:\n");
 		return (64);
 	}
 	if (buffer[EI_CLASS] == ELFCLASS32)
 	{
-		printf("ELF32\n");
+		printf("ELF32:\n");
 		return (32);
 	}
 	printf("<unknown: %x>\n", buffer[EI_CLASS]);
 	return (32);
 }
-
 /**
- * elf_data - print ELF data
- * @buffer: the ELF header
- * Return: 1 if big endian, otherwise 0
+ * elf_data - ELF data
+ * @buffer: ELF header
+ * Return: 1 big, else 0
  */
 int elf_data(const unsigned char *buffer)
 {
@@ -110,18 +105,17 @@ int elf_data(const unsigned char *buffer)
 
 	if (buffer[EI_DATA] == ELFDATA2MSB)
 	{
-		printf("2's complement, big endian\n");
+		printf("2's complement, Big endian\n");
 		return (1);
 	}
 	if (buffer[EI_DATA] == ELFDATA2LSB)
 	{
-		printf("2's complement, little endian\n");
+		printf("2's complement, Little endian\n");
 		return (0);
 	}
-	printf("Invalid data encoding\n");
+	printf("Invalid data \n");
 	return (0);
 }
-
 /**
  * elf_version - print ELF version
  * @buffer: the ELF header
