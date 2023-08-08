@@ -4,13 +4,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-/**
- * _strncmp - compared
- * @s1: string num 1
- * @s2: string num 2
- * @n: bytes max
- * Return: 0 if s1 & s2 are equal, else  non-zero
- */
 int _strncmp(const char *s1, const char *s2, size_t n)
 {
 	for ( ; n && *s1 && *s2; --n, ++s1, ++s2)
