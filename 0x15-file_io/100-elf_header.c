@@ -79,7 +79,7 @@ void elf_magic(const unsigned char *buffer)
  */
 size_t elf_class(const unsigned char *buffer)
 {
-	printf("  %-34s ", "Classes:");
+	printf("  %-34s ", "Class:");
 
 	if (buffer[EI_CLASS] == ELFCLASS64)
 	{
@@ -105,12 +105,12 @@ int elf_data(const unsigned char *buffer)
 
 	if (buffer[EI_DATA] == ELFDATA2MSB)
 	{
-		printf("2's complement, Big endian\n");
+		printf("2's complement, big endian\n");
 		return (1);
 	}
 	if (buffer[EI_DATA] == ELFDATA2LSB)
 	{
-		printf("2's complement, Little endian\n");
+		printf("2's complement, little endian\n");
 		return (0);
 	}
 	printf("Invalid data \n");
