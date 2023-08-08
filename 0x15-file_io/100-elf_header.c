@@ -28,37 +28,33 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 	return (0);
 }
 /**
- * _close - close a file descriptor and print an error message upon failure
- * @fd: the file descriptor to close
+ * _close - close file and print error
+ * @fd: the file to close
  */
 void _close(int fd)
 {
 	if (close(fd) != -1)
 		return;
-	write(STDERR_FILENO, "Error: Can't close fd\n", 22);
+	write(STDERR_FILENO, "Err: Cannot close fd\n", 22);
 	exit(98);
 }
-
 /**
- * _read - read from a file and print an error message upon failure
- * @fd: the file descriptor to read from
- * @buf: the buffer to write to
- * @count: the number of bytes to read
+ * _read - read a file and send error if fails
+ * @fd: the file to read from
+ * @buf: the buf to write to
+ * @count: the bytes to read
  */
 void _read(int fd, char *buf, size_t count)
 {
 	if (read(fd, buf, count) != -1)
 		return;
-	write(STDERR_FILENO, "Error: Can't read from file\n", 28);
+	write(STDERR_FILENO, "Err: Cannot read from file\n", 28);
 	_close(fd);
 	exit(98);
 }
-
-
-
 /**
- * elf_magic - print ELF magic
- * @buffer: the ELF header
+ * elf_magic - print ELF magical
+ * @buffer: ELF header
  */
 void elf_magic(const unsigned char *buffer)
 {
@@ -66,7 +62,7 @@ void elf_magic(const unsigned char *buffer)
 
 	if (_strncmp((const char *) buffer, ELFMAG, 4))
 	{
-		write(STDERR_FILENO, "Error: Not an ELF file\n", 23);
+		write(STDERR_FILENO, "Err: Not ELF file\n", 23);
 		exit(98);
 	}
 
