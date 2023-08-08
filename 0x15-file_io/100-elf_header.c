@@ -5,11 +5,11 @@
 #include <unistd.h>
 
 /**
- * _strncmp - compare two strings
- * @s1: the first string
- * @s2: the second string
- * @n: the max number of bytes to compare
- * Return: 0 if the first n bytes of s1 and s2 are equal, otherwise non-zero
+ * _strncmp - compared
+ * @s1: string num 1
+ * @s2: string num 2
+ * @n: bytes max
+ * Return: 0 if s1 & s2 are equal, else  non-zero
  */
 int _strncmp(const char *s1, const char *s2, size_t n)
 {
@@ -27,9 +27,6 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return (0);
 }
-
-
-
 /**
  * _close - close a file descriptor and print an error message upon failure
  * @fd: the file descriptor to close
